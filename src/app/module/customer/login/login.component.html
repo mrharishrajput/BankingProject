@@ -1,0 +1,83 @@
+<p>login works!</p>
+<div class="container m-4">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="../../../../../assets/images/BankLogo.png" width="400" height="300" />
+            <h3 class="text mt-3">Your Personal Banking Partner</h3>
+        </div>
+        <div class="col-md-6" *ngIf="!forgotPassword">
+            <form>
+                <div class="form-outline mb-4">
+                    <input type="email" id="userName" class="form-control" name="userName"
+                        [(ngModel)]="userDetails.userName" />
+                    <label class="form-label" for="userName">User Name</label>
+                </div>
+                <div class="form-outline mb-4">
+                    <input type="password" id="password" name="password" [(ngModel)]="userDetails.password"
+                        class="form-control" />
+                    <label class="form-label" for="password">Password</label>
+                </div>
+                <div class="row mb-4">
+                    <div class="col d-flex justify-content-center">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="checkbox" checked />
+                            <label class="form-check-label" for="checkbox"> Remember me </label>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <a class="btn btn-danger" (click)="forgotPasswordMethod()">Forgot password?</a>
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-primary btn-block mb-4" (click)="loginUser()">Sign in</button>
+                <div class="text-center">
+                    <p>Not a Customer? <a class="btn btn-success" routerLink="../register">Register here</a></p>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6" *ngIf="forgotPassword">
+            <form>
+                <div class="form-outline mb-4">
+                    <input type="email" id="form2Example1" class="form-control" placeholder="Enter User Name" />
+                    <label class="form-label" for="form2Example1">User
+                        Name</label>
+                </div>
+                <div class="row m-2">
+                    <select name="demo" id="#">
+                        <option selected="selected" value="one">Who is Your favriote Actor ?</option>
+                        <option value="two">Who is Your favriote PM ?</option>
+                    </select>
+                </div>
+
+                <button type="button" class="btn btn-primary btn-block mb-4">Get Details</button>
+                <div class="text-center">
+                    <p>Already Have an account click here to log in <a class="btn btn-primary"
+                            (click)="forgotPasswordMethod()">Log in</a></p>
+
+                </div>
+            </form>
+            <form>
+                <div class="form-outline mb-4">
+                    <input type="text" id="form2Example1" class="form-control" placeholder="Enter User Name" />
+                    <label class="form-label" for="form2Example1">User Name</label>
+                </div>
+                <div class="form-outline mb-4">
+                    <input type="password" id="form2Example1" class="form-control" placeholder="Enter Password" />
+                    <label class="form-label" for="form2Example1">Enter Password</label>
+                </div>
+                <div class="form-outline mb-4">
+                    <input type="password" id="form2Example1" class="form-control" placeholder="Confirm Password" />
+                    <label class="form-label" for="form2Example1">Confirm Password</label>
+                </div>
+                <button type="button" class="btn btn-primary btn-block mb-4">Update Password</button>
+            </form>
+            <div class="row">
+                <span>
+                    UserName and Question missmatched.........
+                </span>
+            </div>
+        </div>
+    </div>
+
+</div>
