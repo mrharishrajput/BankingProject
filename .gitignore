@@ -5,14 +5,13 @@
 /tmp
 /out-tsc
 /bazel-out
-
+/_cacache
+/_logs
+/_locks
 # Node
 /node_modules
 npm-debug.log
 yarn-error.log
-/_cacache
-/_logs
-/_locks
 
 # IDEs and editors
 .idea/
