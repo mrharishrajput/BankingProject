@@ -6,14 +6,13 @@
             <h3 class="text mt-3">Your Personal Banking Partner</h3>
         </div>
         <div class="col-md-6" *ngIf="!forgotPassword">
-            <form>
+            <form [formGroup]="userDetails">
                 <div class="form-outline mb-4">
-                    <input type="email" id="userName" class="form-control" name="userName"
-                        [(ngModel)]="userDetails.userName" />
+                    <input type="email" id="userName" class="form-control" name="userName" formControlName="userName" />
                     <label class="form-label" for="userName">User Name</label>
                 </div>
                 <div class="form-outline mb-4">
-                    <input type="password" id="password" name="password" [(ngModel)]="userDetails.password"
+                    <input type="password" id="password" name="password" formControlName="password"
                         class="form-control" />
                     <label class="form-label" for="password">Password</label>
                 </div>
@@ -36,48 +35,66 @@
                 </div>
             </form>
         </div>
-        <div class="col-md-6" *ngIf="forgotPassword">
-            <form>
+        <div class="col-md-6" *ngIf="forgotPassword && !forgotAuthSuccess && changed==''">
+            <form [formGroup]="userDetails">
                 <div class="form-outline mb-4">
-                    <input type="email" id="form2Example1" class="form-control" placeholder="Enter User Name" />
-                    <label class="form-label" for="form2Example1">User
+                    <input type="email" id="fuserName" class="form-control" formControlName="userName"
+                        placeholder="Enter User Name" />
+                    <label class="form-label" for="fuserName">User
                         Name</label>
                 </div>
                 <div class="row m-2">
                     <select name="demo" id="#">
                         <option selected="selected" value="one">Who is Your favriote Actor ?</option>
-                        <option value="two">Who is Your favriote PM ?</option>
                     </select>
                 </div>
+                <div class="form-outline mb-4">
+                    <input type="text" id="favQueAns" class="form-control" formControlName="favQueAns"
+                        placeholder="Enter User Name" />
+                    <label class="form-label" for="favQueAns">
+                        Enter Answer</label>
+                </div>
 
-                <button type="button" class="btn btn-primary btn-block mb-4">Get Details</button>
+                <button type="button" class="btn btn-primary btn-block mb-4" (click)="forgotPasswordGetDetails()">Get
+                    Details</button>
                 <div class="text-center">
                     <p>Already Have an account click here to log in <a class="btn btn-primary"
                             (click)="forgotPasswordMethod()">Log in</a></p>
 
                 </div>
             </form>
-            <form>
-                <div class="form-outline mb-4">
-                    <input type="text" id="form2Example1" class="form-control" placeholder="Enter User Name" />
-                    <label class="form-label" for="form2Example1">User Name</label>
-                </div>
-                <div class="form-outline mb-4">
-                    <input type="password" id="form2Example1" class="form-control" placeholder="Enter Password" />
-                    <label class="form-label" for="form2Example1">Enter Password</label>
-                </div>
-                <div class="form-outline mb-4">
-                    <input type="password" id="form2Example1" class="form-control" placeholder="Confirm Password" />
-                    <label class="form-label" for="form2Example1">Confirm Password</label>
-                </div>
-                <button type="button" class="btn btn-primary btn-block mb-4">Update Password</button>
-            </form>
-            <div class="row">
-                <span>
-                    UserName and Question missmatched.........
-                </span>
-            </div>
         </div>
+        <div class="col-md-6" *ngIf="forgotAuthSuccess && forgotPassword && changed==''">
+            <form [formGroup]="userDetails">
+                <div class="form-outline mb-4">
+                    <input type="text" id="fuserName" class="form-control" placeholder="Enter User Name"
+                        [value]="forgotuserData[0].userName" disabled />
+                </div>
+                <div class="form-outline mb-4">
+                    <input type="password" id="fpassword" class="form-control" placeholder="Enter Password"
+                        formControlName="password" />
+                    <label class="form-label" for="fpassword">Enter Password</label>
+                </div>
+                <div class="form-outline mb-4">
+                    <input type="password" id="fcpassword" class="form-control" placeholder="Confirm Password"
+                        formControlName="cPassword" />
+                    <label class="form-label" for="fcpassword">Confirm Password</label>
+                </div>
+                <button type="button" class="btn btn-primary btn-block mb-4" (click)="updatePassword()">Update
+                    Password</button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <span *ngIf="changed=='changed'">
+                <p class="font-weight-bold text-success"> Thanks Your password have been changed</p>
+                <p>Click Here to login<a class="btn btn-primary" (click)="changein()">Login</a></p>
+            </span>
+            <span *ngIf="changed=='notchanged'">
+                <p class="font-weight-bold text-danger">Your username or security question is mismatched</p>
+                <p>Click Here to login <a class="btn btn-primary" (click)="changein()">Login</a></p>
+            </span>
+        </div>
+
     </div>
 
 </div>

@@ -6,10 +6,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CustomerService {
   customerUrl = 'http://localhost:3000/customer';
+  loginUserData: any;
   constructor(private http: HttpClient) {}
-  UserName = 'Harish';
-  password = '123456789';
+
   customerLogIn() {
     return this.http.get<any>(this.customerUrl);
+  }
+  updatePassword(id: string, body: any) {
+    return this.http.patch<any>(this.customerUrl + `/${id}`, body);
   }
 }

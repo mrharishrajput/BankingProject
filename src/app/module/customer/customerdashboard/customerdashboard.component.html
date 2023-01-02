@@ -1,0 +1,25 @@
+<p>customerdashboard works!</p>
+<p>{{userData[0].userName}}</p>
+<div class="container m-4">
+    <div class="row">
+        <div class="col border ">
+            <a>Create Account</a><br />
+            <a>Add Beneficiary</a><br />
+            <a>Remove Beneficiary</a><br />
+            <a>Transfer Money</a><br />
+            <a>View Statement</a><br />
+        </div>
+        <div class="col">
+            <div class="row border">
+                <p>Account Type</p>
+                <p>Account Balance</p>
+                <input type="checkbox" [checked]="disableCheckbox" (click)="disableCheckbox=!disableCheckbox" />
+
+            </div>
+            <div class="row border">
+                <p>Account Type</p>
+                <p>Account Balance</p>
+            </div>
+        </div>
+    </div>
+</div>

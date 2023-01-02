@@ -8,9 +8,15 @@ import { LoginComponent } from './customer/login/login.component';
 import { CustomerService } from './customer.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CustomerdashboardComponent } from './customer/customerdashboard/customerdashboard.component';
 
 @NgModule({
-  declarations: [CustomerComponent, RegisterComponent, LoginComponent],
+  declarations: [
+    CustomerComponent,
+    RegisterComponent,
+    LoginComponent,
+    CustomerdashboardComponent,
+  ],
   imports: [
     CommonModule,
     CustomerRoutingModule,
